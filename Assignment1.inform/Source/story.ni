@@ -1,9 +1,5 @@
 "Quarrelstar Galactic" by Jason Spencer
 
-Use scoring.
-Maximum score is 50.
-
-
 When play begins: say "The all-too familiar quake of a nuclear detonation shocks you awake. As the commander of the last human warship, the Quarrelstar Galactic, it's up to you to get your crew and remaining fleet of human survivors safe from the onslaught of Skylon attacks."
 
 [Captain's Quarters]
@@ -18,7 +14,7 @@ The description of the communicator is "An older headset-style communicator. Gre
 
 ["Off-stage" items.]
 There is a small bronze key.
-There is a picture. "A worn picture of your estranged son. The number 1083 is written on the back."
+There is a picture. "A worn picture of your estranged son. The number 1083 is written on the back." [Just an easter egg for further revisions.]
 
 The top drawer, the bottom drawer, the cabinet, and locker are openable closed containers. The top drawer, bottom drawer, and cabinet are parts of the desk.
 
@@ -51,33 +47,24 @@ The description of the cracked mirror is "A cracked mirror. In it, you can see t
 
 The Officer's Corridor is east of the Captain's Quarters. The Command Center is east of the Officer's Corridor.
 
-After putting on the uniform:
-	increase the score by 10;
-	
-After putting on the communicator:
-	increase the score by 10;
-
 [Officer's Corridor]
 The Officer's Corridor is a room. "A gray, metallic corridor. To the West lies the Captain's Quarters, and to the east lies the Command Center."
 
 [Command Center]
 
-CustomTurnCounter is a number that varies. [Initialize is and set it to 0. I couldn't figure out how to end the game based purely on the amount of time you spent in a room.]
-
 Every turn:
 	if the player has been in the Command Center for exactly 7 turns:
-		say "You died";
+		say "Innumerable nuclear warheads crash into the Quarrelstar Galactic and the rest of the civilian fleet. Humanity has been eradicated. Sometimes heroism doesn't pay off.";
 		end the story;
 	otherwise if the player is in the Command Center:
-		say "[one of]The Skylons are positioning to launch an attack.[or]The Skylons are preparing a devastating attack.[or]The Skylons have launched a barrage of nuclear warheads.[or]The missiles are closing in, FAST. Make a decision, and make it quick![or]***WARNING*** MASSIVE WARHEAD IMMINENT.[cycling]";
-		increment CustomTurnCounter
+		say "[one of]The Skylons are closing in on our fleet.[or]The Skylons are getting much too close for comfort, and I'm sure the civvies agree.[or]The Skylons are positioning to launch an attack.[or]The Skylons are preparing a devastating attack.[or]The Skylons have launched a barrage of nuclear warheads.[or]The missiles are closing in, FAST. Make a decision, and make it quick![or]***WARNING*** MASSIVE WARHEAD IMMINENT.[cycling]";
 
 The Command Center is a room. "You enter the grand Command Center, an octagonal room with ampitheater-style command stations. In the middle lies your station, a great table-like console and many large screens, collectively enough to cover a football field. 
 
 It's far too quiet for a time of crisis. In fact, there is no trace of any of your crew anywhere. Damage from the Skylon nuke must have blocked off all entrances to the Command Center except yours. At least, that's what you'd like to think."
 
 The Command Console is in the Command Center. "A grand, table-look console. On it you see a Faster-Than-Light (FTL) Jump button, and a Plot FTL Jump button."
-The Command Console is fixed in place. The Command Console is undescribed. The Jump button and Plot button are parts of the Command Console.
+The Command Console is fixed in place. The Command Console is undescribed. The Jump button is part of the Command Console.
 
 Using is an action applying to one thing. Understand "use [something]", "use the [something]" as using.
 
@@ -85,13 +72,32 @@ Instead of using the communicator:
 	if location is not the Command Center:
 		say "Out of range. Please move to the Command Center to reconnect.";
 	otherwise if the player has been in the Command Center for exactly one turn:
-		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 0/50 civilian ships. You are able to jump at any time, just please ensure that you plot your jump first.";
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 0/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you.";
 	otherwise if the player has been in the Command Center for exactly two turns:
-		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 10/50 civilian ships. You are able to jump at any time, just please ensure that you plot your jump first.";
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 10/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you.";
 	otherwise if the player has been in the Command Center for exactly three turns:
-		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 20/50 civilian ships. You are able to jump at any time, just please ensure that you plot your jump first.";
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 20/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you.";
 	otherwise if the player has been in the Command Center for exactly four turns:
-		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 30/50 civilian ships. You are able to jump at any time, just please ensure that you plot your jump first.";
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 30/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you.";
 	otherwise if the player has been in the Command Center for exactly five turns:
-		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 40/50 civilian ships. You are able to jump at any time, just please ensure that you plot your jump first."
-	
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 40/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you.";
+	otherwise if the player has been in the Command Center for exactly six turns:
+		say "Greetings, Commander. Here is the current sitrep:[line break]We currently are in contact with 50/50 civilian ships. You are able to jump at any time, just please ensure that your fleet has enough time to catch up with you."
+
+Instead of pushing the Jump button:
+	if the player has been in the Command Center for exactly one turn:
+		end the story saying "You've managed to save you, your ship, and whomever or whatever else may be on the ship. The rest of humanity is doomed.";
+	otherwise if the player has been in the Command Center for exactly two turns:
+		end the story saying "Only a few civilian ships were able to follow you. The rest surely will meet their maker.";
+	otherwise if the player has been in the Command Center for exactly three turns:
+		end the story saying "You and some of the remaining humans made it out alive.";
+	otherwise if the player has been in the Command Center for exactly four turns:
+		end the story saying "Good work. You managed to save enough humans to have a decent shot at repopulation and survival of the human species.";
+	otherwise if the player has been in the Command Center for exactly five turns:
+		end the story saying "Excellent work, Commander. You minimized the loss from the surprise attack and made it out alive to see another day.";
+	otherwise if the player has been in the Command Center for more than five turns:
+		end the story saying "Fantastic job! You've won in every single way possible--but what of your crew? Find out in the next installment of Totally Not A Rip Off Of A Really Good Sci Fi Series That If You Haven't Seen And You're Like Into That Thing You Should Totally Watch! Buh bye!
+
+		P.S.: Did you find the picture? ;D"
+		
+Release with an existing story file.
